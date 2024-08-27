@@ -1,0 +1,8 @@
+identity = "~/.config/solana/id.json"
+rpc_url = "https://api.devnet.solana.com"
+
+[[collections]]
+name = "payments"
+address = "127.0.0.1"
+port = 3000
+protocol = "http"
