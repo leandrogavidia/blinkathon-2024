@@ -1,5 +1,5 @@
 [package]
-name = "payments"
+name = "pay-with-send-token"
 version = "0.1.0"
 edition = "2021"
 
@@ -13,4 +13,4 @@ solana-client = "2.0.7"
 solana-sdk = "2.0.7"
 spl-associated-token-account = "4.0.0"
 spl-token = "6.0.0"
-znap = "0.1.35"
+znap = "0.1.36"

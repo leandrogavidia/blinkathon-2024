@@ -91,12 +91,12 @@ pub mod pay_with_send_token {
         let token_mint = &ctx.params.token_mint;
         let receiver_address = &ctx.params.receiver;
 
-        let res = get_token_metadata(&token_mint, &ctx.env.rpc_url)
-            .await
-            .or_else(|_| Err(Error::from(ActionError::ErrorObtainingTokenMetadata)))?;
+        // let res = get_token_metadata(&token_mint, &ctx.env.rpc_url)
+        //     .await
+        //     .or_else(|_| Err(Error::from(ActionError::ErrorObtainingTokenMetadata)))?;
 
-        let token_symbol = res["result"]["token_info"]["symbol"].as_u64().unwrap();
-
+        // let token_symbol = res["result"]["token_info"]["symbol"].as_u64().unwrap();
+        let token_symbol = "USDC";
         let label = "Send payment!";
         let description = format!(
             "Pay in {} and {} receives in SEND",

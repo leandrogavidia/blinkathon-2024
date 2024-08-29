@@ -2487,7 +2487,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "57c0d7b74b563b49d38dae00a0c37d4d6de9b432382b2892f0574ddcae73fd0a"
 
 [[package]]
-name = "payments"
+name = "pay-with-send-token"
 version = "0.1.0"
 dependencies = [
  "axum",
@@ -5522,9 +5522,9 @@ dependencies = [
 
 [[package]]
 name = "znap"
-version = "0.1.35"
+version = "0.1.36"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "615965cc5a9c3999a752938f5a8d73fbaebe3ca2c290f7ad1ab8025e541e65a7"
+checksum = "c7178fc234eb4e461f21a241c7b1649bb8c984c12337810bfbe6fb0c0f9dd8db"
 dependencies = [
  "axum",
  "base64 0.22.1",
@@ -5540,9 +5540,9 @@ dependencies = [
 
 [[package]]
 name = "znap-macros"
-version = "0.1.35"
+version = "0.1.36"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "c2fc1d737afaf93fdc8802d458e3cfb92ac8f8a268282ce6c50e8c3f3476deab"
+checksum = "323ac3d7979c7e358bb47b865bd382e55f62da659effb5523830153d0eb337eb"
 dependencies = [
  "proc-macro2",
  "quote",
@@ -5552,9 +5552,9 @@ dependencies = [
 
 [[package]]
 name = "znap-syn"
-version = "0.1.35"
+version = "0.1.36"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "6053b3ea8ee8d709f81779c4981438eae2a04e336670ddb6d4fb79db98561d68"
+checksum = "f8aa2d283b2181fb23dc69f9cfcdec92a5269f4f59186cf248866462ab4dff6d"
 dependencies = [
  "anyhow",
  "colored",
