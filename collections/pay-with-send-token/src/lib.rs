@@ -19,7 +19,7 @@ mod utils;
 const SEND_MINT_ADDRESS: Pubkey = pubkey!("SENDdRQtYMWaQrBroBrJ2Q53fgVuq95CV9UPGEvpCxa");
 
 #[collection]
-pub mod payments { 
+pub mod pay_with_send_token { 
     use super::*;
 
     fn pay(ctx: Context<PayAction>) -> Result<ActionTransaction> {
@@ -117,7 +117,7 @@ pub mod payments {
         Ok(ActionMetadata {
             title: "Pay with SEND using any Solana token".to_string(),
             description: description.to_string(),
-            icon: "".to_string(),
+            icon: "https://raw.githubusercontent.com/leandrogavidia/files/main/payments-with-send-token.png".to_string(),
             label: label.to_string(),
             disabled: false,
             error: None,
