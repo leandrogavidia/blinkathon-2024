@@ -91,12 +91,11 @@ pub mod pay_with_send_token {
         let token_mint = &ctx.params.token_mint;
         let receiver_address = &ctx.params.receiver;
 
-        // let res = get_token_metadata(&token_mint, &ctx.env.rpc_url)
-        //     .await
-        //     .or_else(|_| Err(Error::from(ActionError::ErrorObtainingTokenMetadata)))?;
+        let res = get_token_metadata(&token_mint, &ctx.env.rpc_url)
+            .await
+            .or_else(|_| Err(Error::from(ActionError::ErrorObtainingTokenMetadata)))?;
 
-        // let token_symbol = res["result"]["token_info"]["symbol"].as_u64().unwrap();
-        let token_symbol = "USDC";
+        let token_symbol = res["result"]["token_info"]["symbol"].as_str().unwrap();
         let label = "Send payment!";
         let description = format!(
             "Pay in {} and {} receives in SEND",
@@ -105,7 +104,7 @@ pub mod pay_with_send_token {
         let links = ActionLinks {
             actions: vec![LinkedAction {
                 label: "Send payment!".to_string(),
-                href: "/api/pay/{{params.token_mint}}/{{params.receiver}}?amount=amount".to_string(),
+                href: format!("/api/pay/{}/{}?amount={amount}", token_mint, receiver_address),
                 parameters: vec![LinkedActionParameter {
                     label: "Amount".to_string(),
                     name: "amount".to_string(),
@@ -130,19 +129,3 @@ pub mod pay_with_send_token {
 #[query(amount: f32)]
 #[params(token_mint: String, receiver: String)]
 pub struct PayAction;
-
-// #[derive(Action)]
-// #[action(
-//     icon = "",
-//     title = "Pay with SEND using any Solana token",
-//     description = "Pay with X and 1234567890 receives in SEND",
-//     label = "Send payment!",
-//     link = {
-//         label = "Send payment!",
-//         href = "/api/pay/{{params.token_mint}}/{{params.receiver}}?amount=amount",
-//         parameter = { label = "Amount", name = "amount" }
-//     }
-// )]
-// #[query(amount: f32)]
-// #[params(token_mint: String, receiver: String)]
-// pub struct PayAction;
