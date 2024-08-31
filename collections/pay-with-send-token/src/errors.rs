@@ -12,8 +12,6 @@ pub enum ActionError {
     ErrorObtainingTokenAccountData,
     #[error(msg = "Error obtaining token metadata")]
     ErrorObtainingTokenMetadata,
-    #[error(msg = "Error obtaining swap instructions")]
-    ErrorObtainingSwapInstructions,
     #[error(msg = "Internal server error")]
     InternalServerError,
     #[error(msg = "Unknown server error")]

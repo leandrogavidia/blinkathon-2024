@@ -43,7 +43,7 @@ pub mod pay_with_send_token {
 
         let create_send_ata_instruction = create_associated_token_account_idempotent(
             &account_pubkey,
-            &account_pubkey,
+            &receiver_pubkey,
             &SEND_MINT_ADDRESS,
             &TOKEN_PROGRAM_ID,
         );
@@ -56,7 +56,7 @@ pub mod pay_with_send_token {
             amount,
         )
         .await
-        .or_else(|_| Err(Error::from(ActionError::ErrorObtainingSwapInstructions)))?;
+        .or_else(|_| Err(Error::from(ActionError::QuoteNotFound)))?;
 
         let token_ledger_instruction = swap_instructions.token_ledger_instruction;
         let swap_compute_budget_instructions = swap_instructions.compute_budget_instructions;
@@ -101,10 +101,11 @@ pub mod pay_with_send_token {
             "Pay in {} and {} receives in SEND",
             token_symbol, format_pubkey(&receiver_address.to_string(), 10)
         );
+        let amount = "{amount}";
         let links = ActionLinks {
             actions: vec![LinkedAction {
                 label: "Send payment!".to_string(),
-                href: format!("/api/pay/{}/{}?amount={amount}", token_mint, receiver_address),
+                href: format!("/api/pay/{}/{}?amount={}", token_mint, receiver_address, amount),
                 parameters: vec![LinkedActionParameter {
                     label: "Amount".to_string(),
                     name: "amount".to_string(),
@@ -126,6 +127,17 @@ pub mod pay_with_send_token {
 }
 
 #[derive(Action)]
+#[action(
+    icon = "https://raw.githubusercontent.com/leandrogavidia/files/main/payments-with-send-token.png",
+    title = "Pay with SEND using any Solana token",
+    description = "Pay in {} and {} receives in SEND",
+    label = "Send payment!",
+    link = {
+        label = "Send payment!",
+        href = "/api/pay/{{params.token_mint}}/{{params.receiver}}?amount={amount}",
+        parameter = { label = "Amount", name = "amount"  },
+    }
+)]
 #[query(amount: f32)]
 #[params(token_mint: String, receiver: String)]
 pub struct PayAction;

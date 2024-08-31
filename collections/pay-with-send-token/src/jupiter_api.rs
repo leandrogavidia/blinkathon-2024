@@ -17,7 +17,7 @@ pub async fn get_swap_instructions(
     let client = Client::new();
     let base_url = "https://quote-api.jup.ag/v6";
 
-    let max_accounts = "50";
+    let max_accounts = "18";
 
     let quote_response = client
         .get(format!(
