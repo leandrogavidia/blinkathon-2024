@@ -107,7 +107,7 @@ pub mod pay_with_send_token {
                 label: "Send payment!".to_string(),
                 href: format!("/api/pay/{}/{}?amount={}", token_mint, receiver_address, amount),
                 parameters: vec![LinkedActionParameter {
-                    label: "Amount".to_string(),
+                    label: format!("Amount in {}", token_symbol),
                     name: "amount".to_string(),
                     required: true,
                 }],
@@ -132,9 +132,10 @@ pub mod pay_with_send_token {
     title = "Pay with SEND using any Solana token",
     description = "Pay in {} and {} receives in SEND",
     label = "Send payment!",
+    path = "{{prefix}}/{{action_name}}",
     link = {
         label = "Send payment!",
-        href = "/api/pay/{{params.token_mint}}/{{params.receiver}}?amount={amount}",
+        href = "{{prefix}}/{{params.token_mint}}/{{params.receiver}}?amount={amount}",
         parameter = { label = "Amount", name = "amount"  },
     }
 )]
