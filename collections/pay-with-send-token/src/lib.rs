@@ -104,7 +104,7 @@ pub mod pay_with_send_token {
         let amount = "{amount}";
         let links = ActionLinks {
             actions: vec![LinkedAction {
-                label: "Send payment!".to_string(),
+                label: label.to_string(),
                 href: format!("/api/pay/{}/{}?amount={}", token_mint, receiver_address, amount),
                 parameters: vec![LinkedActionParameter {
                     label: format!("Amount in {}", token_symbol),
@@ -127,18 +127,6 @@ pub mod pay_with_send_token {
 }
 
 #[derive(Action)]
-#[action(
-    icon = "https://raw.githubusercontent.com/leandrogavidia/files/main/payments-with-send-token.png",
-    title = "Pay with SEND using any Solana token",
-    description = "Pay in {} and {} receives in SEND",
-    label = "Send payment!",
-    path = "{{prefix}}/{{action_name}}",
-    link = {
-        label = "Send payment!",
-        href = "{{prefix}}/{{params.token_mint}}/{{params.receiver}}?amount={amount}",
-        parameter = { label = "Amount", name = "amount"  },
-    }
-)]
 #[query(amount: f32)]
 #[params(token_mint: String, receiver: String)]
 pub struct PayAction;

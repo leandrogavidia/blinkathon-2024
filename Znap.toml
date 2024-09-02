@@ -1,5 +1,5 @@
 identity = "~/.config/solana/id.json"
-rpc_url = "https://mainnet.helius-rpc.com/?api-key=22a5a327-77fd-4021-b6d3-2d1ccb26fb18"
+rpc_url = "http://localhost:8899"
 
 [[collections]]
 name = "pay-with-send-token"
@@ -11,4 +11,10 @@ protocol = "http"
 name = "kmno-staking"
 address = "127.0.0.1"
 port = 3001
+protocol = "http"
+
+[[collections]]
+name = "create-squads-multisig"
+address = "127.0.0.1"
+port = 3002
 protocol = "http"
